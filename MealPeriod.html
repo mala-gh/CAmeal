@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Calculate California meal-period requirements and deadlines from a scheduled shift.">
+    <meta name="theme-color" content="#17324d">
+    <title>California Meal Period Calculator</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2317324d'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23fff' stroke-width='5'/%3E%3Cpath d='M32 20v13l9 5' fill='none' stroke='%23e59f23' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="main_files/styles_NP7r.css">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="masthead">
+        <div class="app-icon" aria-hidden="true">CA</div>
+        <div class="title-lockup">
+          <p class="eyebrow">California workday planning</p>
+          <h1>Meal Period Calculator</h1>
+        </div>
+        <div class="time-standard" aria-label="Time format">24-hour time</div>
+      </header>
+
+      <main>
+        <section class="calculator" aria-labelledby="shift-heading">
+          <div class="section-heading">
+            <div>
+              <p class="step">Shift details</p>
+              <h2 id="shift-heading">Enter the planned workday</h2>
+            </div>
+            <button class="text-button" id="resetButton" type="button">Reset</button>
+          </div>
+
+          <form id="calculatorForm" novalidate="">
+            <div class="field-grid">
+              <label class="field">
+                <span>Shift start</span>
+                <input id="startTime" name="startTime" type="time" value="06:00" required="">
+              </label>
+
+              <label class="field">
+                <span>Shift end</span>
+                <input id="endTime" name="endTime" type="time" value="14:30" required="">
+                <small id="overnightHint">Same day</small>
+              </label>
+            </div>
+
+            <label class="field select-field">
+              <span>Planned first meal length</span>
+              <select id="firstMealLength" name="firstMealLength">
+                <option value="30" selected="selected">30 minutes</option>
+                <option value="45">45 minutes</option>
+                <option value="60">60 minutes</option>
+              </select>
+              <small>Used to calculate projected work time and the second-meal deadline.</small>
+            </label>
+
+            <p class="error" id="formError" role="alert" hidden=""></p>
+          </form>
+        </section>
+
+        <section class="results" aria-live="polite" aria-atomic="true">
+          <div class="result-summary">
+            <div>
+              <p class="step">Result</p>
+              <h2 id="resultTitle">One meal period required</h2>
+            </div>
+            <div class="duration-pill" id="durationPill">8h 30m workday span</div>
+          </div>
+
+          <div id="resultCards" class="result-cards">
+      <article class="meal-card">
+        <div class="meal-number">1</div>
+        <div class="meal-copy">
+          <p class="meal-label">First meal period</p>
+          <h3 class="meal-time">11:00</h3>
+          <p class="meal-detail">Start no later than the end of the 5th hour worked.</p>
+        </div>
+        <div class="deadline-tag">Latest start</div>
+      </article>
+    </div>
+
+          <div class="waiver-panel" id="waiverPanel" hidden="">
+            <div class="waiver-icon" aria-hidden="true">W</div>
+            <div>
+              <h3 id="waiverTitle">Second meal waiver may be available</h3>
+              <p id="waiverText"></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="guidance" aria-labelledby="guidance-heading">
+          <div class="guidance-title">
+            <span class="info-icon" aria-hidden="true">i</span>
+            <h2 id="guidance-heading">What the calculation uses</h2>
+          </div>
+          <ul>
+            <li>A first 30-minute meal must generally be provided when work exceeds 5 hours.</li>
+            <li>The first meal must begin no later than the end of the 5th hour worked.</li>
+            <li>The first meal may be waived by mutual consent only when total work is no more than 6 hours.</li>
+            <li>A second 30-minute meal must generally be provided when work exceeds 10 hours.</li>
+            <li>The second meal may be waived by mutual consent only when total work is no more than 12 hours and the first meal was not waived.</li>
+          </ul>
+          <p class="scope-note">
+            General rule for nonexempt employees. Industry, occupation, wage-order, or collective-bargaining exceptions may apply. This calculator does not cover paid rest breaks.
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <p>
+          General information only—not legal advice or an official employer policy. Confirm the current rule for the employee’s role and industry.
+        </p>
+        <p class="source-links">
+          Official sources:
+          <a href="https://www.dir.ca.gov/dlse/faq_mealperiods.htm" target="_blank" rel="noreferrer">California DIR meal-period guidance</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&amp;sectionNum=512." target="_blank" rel="noreferrer">Labor Code § 512</a>
+        </p>
+      </footer>
+    </div>
+
+    <template id="mealCardTemplate">
+      <article class="meal-card">
+        <div class="meal-number"></div>
+        <div class="meal-copy">
+          <p class="meal-label"></p>
+          <h3 class="meal-time"></h3>
+          <p class="meal-detail"></p>
+        </div>
+        <div class="deadline-tag">Latest start</div>
+      </article>
+    </template>
+
+    <script src="main_files/app_NP7r.js"></script>
+  
+
+</body></html>
