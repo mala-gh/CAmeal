@@ -128,7 +128,7 @@
       return;
     }
 
-    overnightHint.textContent = result.overnight ? "Ends next day" : "Same day";
+    overnightHint.textContent = result.overnight ? "(Ends next day)" : "(Same day)";
     durationPill.textContent = `${formatDuration(result.elapsed)} workday span`;
     resultCards.replaceChildren();
     waiverPanel.hidden = true;

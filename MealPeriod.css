@@ -77,7 +77,6 @@ select {
   min-width: 0;
 }
 
-.eyebrow,
 .step {
   margin: 0 0 2px;
   color: var(--blue);
@@ -175,7 +174,6 @@ form {
 }
 
 .field {
-  display: grid;
   gap: 8px;
   color: var(--navy);
   font-weight: 750;
@@ -206,11 +204,6 @@ form {
   border-color: var(--blue);
   box-shadow: 0 0 0 4px rgba(22, 124, 150, 0.14);
   outline: none;
-}
-
-.select-field {
-  max-width: calc(50% - 8px);
-  margin-top: 16px;
 }
 
 .error {
